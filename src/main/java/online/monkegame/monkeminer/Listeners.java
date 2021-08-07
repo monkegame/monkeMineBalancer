@@ -1,5 +1,8 @@
 package online.monkegame.monkeminer;
 
+import net.kyori.adventure.text.Component;
+import net.kyori.adventure.text.format.NamedTextColor;
+import net.kyori.adventure.text.format.TextDecoration;
 import org.bukkit.Material;
 import org.bukkit.enchantments.Enchantment;
 import org.bukkit.entity.Player;
@@ -58,7 +61,7 @@ public class Listeners implements Listener {
     }
 
     public void dropRate(BlockBreakEvent blockbreak) {
-        if (blockbreak.getPlayer().getInventory().getItemInMainHand().containsEnchantment(Enchantment.LOOT_BONUS_BLOCKS) && materials.contains(blockbreak.getBlock().getBlockData().getMaterial())) {
+        if (materials.contains(blockbreak.getBlock().getBlockData().getMaterial())) {
             double weewoo = Math.random();
             if (weewoo <= 0.921) {
                 //92.1% chance of single drops
@@ -69,6 +72,7 @@ public class Listeners implements Listener {
                 itemlist.addAll(blockbreak.getBlock().getDrops());
             } else {
                 //1% chance of triple drops
+                blockbreak.getPlayer().sendMessage(Component.text("TRIPLE DROPS!!!", NamedTextColor.GREEN, TextDecoration.BOLD));
                 itemlist.addAll(blockbreak.getBlock().getDrops());
                 itemlist.addAll(blockbreak.getBlock().getDrops());
                 itemlist.addAll(blockbreak.getBlock().getDrops());
