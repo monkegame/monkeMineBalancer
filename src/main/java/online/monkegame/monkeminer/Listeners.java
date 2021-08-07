@@ -1,8 +1,12 @@
 package online.monkegame.monkeminer;
 
+import net.kyori.adventure.sound.Sound;
 import net.kyori.adventure.text.Component;
+import net.kyori.adventure.text.TextComponent;
 import net.kyori.adventure.text.format.NamedTextColor;
+import net.kyori.adventure.text.format.TextColor;
 import net.kyori.adventure.text.format.TextDecoration;
+import online.monkegame.monkeminer.utils.ColorGenerator;
 import org.bukkit.Material;
 import org.bukkit.enchantments.Enchantment;
 import org.bukkit.entity.Player;
@@ -20,6 +24,7 @@ public class Listeners implements Listener {
 
     public Main plugin;
     public Logger log;
+    public ColorGenerator cg;
     public List<ItemStack> itemlist = new ArrayList<>();
     public List<Material> materials = new ArrayList<>(Arrays.asList(
             Material.COAL_ORE,
@@ -46,6 +51,7 @@ public class Listeners implements Listener {
     public Listeners(Main main, Logger logger) {
         this.plugin = main;
         this.log = logger;
+        this.cg = new ColorGenerator();
     }
 
     @EventHandler
@@ -72,7 +78,7 @@ public class Listeners implements Listener {
                 itemlist.addAll(blockbreak.getBlock().getDrops());
             } else {
                 //1% chance of triple drops
-                blockbreak.getPlayer().sendMessage(Component.text("TRIPLE DROPS!!!", NamedTextColor.GREEN, TextDecoration.BOLD));
+                blockbreak.getPlayer().sendMessage(generateTripleMessage());
                 itemlist.addAll(blockbreak.getBlock().getDrops());
                 itemlist.addAll(blockbreak.getBlock().getDrops());
                 itemlist.addAll(blockbreak.getBlock().getDrops());
@@ -82,4 +88,12 @@ public class Listeners implements Listener {
         }
     }
 
+    public Component generateTripleMessage() {
+        char[] message = {'T','R', 'I', 'P', 'L', 'E', ' ', 'D', 'R', 'O', 'P', 'S', '!', '!', '!'};
+        TextComponent.Builder component = Component.text();
+        for(char chare : message) {
+            component.append(Component.text(chare).color(TextColor.color(cg.randomKyoriColor())).decorate(TextDecoration.BOLD));
+        }
+        return component.build();
+    }
 }
