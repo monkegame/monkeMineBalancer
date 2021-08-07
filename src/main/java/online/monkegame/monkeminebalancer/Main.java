@@ -1,4 +1,4 @@
-package online.monkegame.monkeminer;
+package online.monkegame.monkeminebalancer;
 
 import org.bukkit.plugin.java.JavaPlugin;
 

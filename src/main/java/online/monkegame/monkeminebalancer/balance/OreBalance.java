@@ -1,0 +1,68 @@
+package online.monkegame.monkeminebalancer.balance;
+
+import net.kyori.adventure.text.Component;
+import net.kyori.adventure.text.format.NamedTextColor;
+import net.kyori.adventure.text.format.TextColor;
+import net.kyori.adventure.text.format.TextDecoration;
+import org.bukkit.Material;
+import org.bukkit.enchantments.Enchantment;
+import org.bukkit.event.block.BlockBreakEvent;
+import org.bukkit.inventory.ItemStack;
+
+import java.util.List;
+import java.util.Map;
+
+import static java.util.Map.entry;
+
+public class OreBalance {
+
+    public Map<Material, Integer> materials = Map.ofEntries(
+            entry(Material.COAL_ORE,5),
+            entry(Material.DEEPSLATE_COAL_ORE,5),
+            entry(Material.DEEPSLATE_DIAMOND_ORE,2),
+            entry(Material.DEEPSLATE_EMERALD_ORE,3),
+            entry(Material.DEEPSLATE_GOLD_ORE,3),
+            entry(Material.DEEPSLATE_COPPER_ORE,4),
+            entry(Material.DEEPSLATE_IRON_ORE,4),
+            entry(Material.DEEPSLATE_LAPIS_ORE,4),
+            entry(Material.DEEPSLATE_REDSTONE_ORE,3),
+            entry(Material.COPPER_ORE,4),
+            entry(Material.DIAMOND_ORE,2),
+            entry(Material.EMERALD_ORE,3),
+            entry(Material.GOLD_ORE,4),
+            entry(Material.NETHER_GOLD_ORE,4),
+            entry(Material.NETHER_QUARTZ_ORE,4),
+            entry(Material.REDSTONE_ORE,3),
+            entry(Material.IRON_ORE,4),
+            entry(Material.LAPIS_ORE,4),
+            entry(Material.AMETHYST_CLUSTER,3),
+            entry(Material.ANCIENT_DEBRIS, 1)
+    );
+
+    public void dropRate(BlockBreakEvent blockbreak, List<ItemStack> itemlist) {
+        if (materials.containsKey(blockbreak.getBlock().getBlockData().getMaterial()) && !blockbreak.getPlayer().getInventory().getItemInMainHand().containsEnchantment(Enchantment.SILK_TOUCH)) {
+            double weewoo = Math.random();
+            weewoo = weewoo + (materials.get(blockbreak.getBlock().getBlockData().getMaterial()) * 0.02);
+            if (weewoo < 0.931) {
+                //92.1% chance of single drops
+                itemlist.addAll(blockbreak.getBlock().getDrops());
+            } else if (weewoo >= 0.931 && weewoo < 0.99) {
+                //6.9% chance of double drops - Smertieboi
+                itemlist.addAll(blockbreak.getBlock().getDrops());
+                itemlist.addAll(blockbreak.getBlock().getDrops());
+            } else {
+                //1% chance of triple drops
+                blockbreak.getPlayer().sendMessage(Component.text("TRIPLE DROPS!!!").color(TextColor.color(NamedTextColor.AQUA)).decorate(TextDecoration.BOLD));
+                itemlist.addAll(blockbreak.getBlock().getDrops());
+                itemlist.addAll(blockbreak.getBlock().getDrops());
+                itemlist.addAll(blockbreak.getBlock().getDrops());
+            }
+        } else if (blockbreak.getPlayer().getInventory().getItemInMainHand().containsEnchantment(Enchantment.SILK_TOUCH)) {
+            // just add the block normally if the player has a silk touch tool
+            itemlist.add(new ItemStack(blockbreak.getBlock().getBlockData().getMaterial()));
+        } else {
+            itemlist.addAll(blockbreak.getBlock().getDrops());
+        }
+    }
+
+}
