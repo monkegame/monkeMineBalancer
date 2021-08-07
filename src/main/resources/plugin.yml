@@ -1,0 +1,5 @@
+main: 'online.monkegame.monkeminer.Main'
+version: '1.0'
+name: 'monkeMiner'
+authors: ['Mrs_Herobrine_', 'Smertieboi']
+api-version: '1.17'
