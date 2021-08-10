@@ -1,5 +1,8 @@
 package online.monkegame.monkeminebalancer;
 
+import net.kyori.adventure.text.Component;
+import net.kyori.adventure.text.format.NamedTextColor;
+import net.kyori.adventure.text.format.TextDecoration;
 import online.monkegame.monkeminebalancer.balance.OreBalance;
 import online.monkegame.monkeminebalancer.utils.ColorGenerator;
 import org.bukkit.entity.Player;
@@ -31,13 +34,19 @@ public class Listeners implements Listener {
     @EventHandler
     public void onBlockDrop(BlockBreakEvent blockbreak) {
         Player p = blockbreak.getPlayer();
-        orebal.dropRate(blockbreak, itemlist);
-        blockbreak.setDropItems(false);
-        for (ItemStack item : itemlist) {
-            p.getInventory().addItem(item);
+        if (p.getInventory().firstEmpty() == -1) {
+            blockbreak.setCancelled(true);
+            blockbreak.setDropItems(false);
+            p.sendMessage(Component.text("Your inventory is full!").decoration(TextDecoration.ITALIC, true).color(NamedTextColor.RED));
+        } else {
+            orebal.dropRate(blockbreak, itemlist);
+            blockbreak.setDropItems(false);
+            for (ItemStack item : itemlist) {
+                p.getInventory().addItem(item);
+            }
+            //log.info(p.getName() + ": " + itemlist);
+            itemlist.clear();
         }
-        //log.info(p.getName() + ": " + itemlist);
-        itemlist.clear();
     }
 
 }

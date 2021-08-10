@@ -48,6 +48,7 @@ public class OreBalance {
                 itemlist.addAll(blockbreak.getBlock().getDrops());
             } else if (weewoo >= 0.931 && weewoo < 0.99) {
                 //6.9% chance of double drops - Smertieboi
+                blockbreak.getPlayer().sendMessage(Component.text("Double drops!").decoration(TextDecoration.ITALIC, true).color(NamedTextColor.GREEN));
                 itemlist.addAll(blockbreak.getBlock().getDrops());
                 itemlist.addAll(blockbreak.getBlock().getDrops());
             } else {
