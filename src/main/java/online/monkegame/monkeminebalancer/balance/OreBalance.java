@@ -5,10 +5,13 @@ import net.kyori.adventure.text.format.NamedTextColor;
 import net.kyori.adventure.text.format.TextColor;
 import net.kyori.adventure.text.format.TextDecoration;
 import org.bukkit.Material;
+import org.bukkit.block.data.BlockData;
 import org.bukkit.enchantments.Enchantment;
 import org.bukkit.event.block.BlockBreakEvent;
 import org.bukkit.inventory.ItemStack;
 
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
 
@@ -39,6 +42,13 @@ public class OreBalance {
             entry(Material.ANCIENT_DEBRIS, 1)
     );
 
+    public List<Material> chests = Arrays.asList(
+            Material.CHEST,
+            Material.CHEST_MINECART,
+            Material.BARREL,
+            Material.TRAPPED_CHEST
+    );
+
     public void dropRate(BlockBreakEvent blockbreak, List<ItemStack> itemlist) {
         if (materials.containsKey(blockbreak.getBlock().getBlockData().getMaterial()) && !blockbreak.getPlayer().getInventory().getItemInMainHand().containsEnchantment(Enchantment.SILK_TOUCH)) {
             double weewoo = Math.random();
@@ -46,21 +56,27 @@ public class OreBalance {
             if (weewoo < 0.931) {
                 //92.1% chance of single drops
                 itemlist.addAll(blockbreak.getBlock().getDrops());
+                blockbreak.setDropItems(true);
             } else if (weewoo >= 0.931 && weewoo < 0.99) {
                 //6.9% chance of double drops - Smertieboi
                 blockbreak.getPlayer().sendMessage(Component.text("Double drops!").decoration(TextDecoration.ITALIC, true).color(NamedTextColor.GREEN));
                 itemlist.addAll(blockbreak.getBlock().getDrops());
                 itemlist.addAll(blockbreak.getBlock().getDrops());
+                blockbreak.setDropItems(true);
             } else {
                 //1% chance of triple drops
                 blockbreak.getPlayer().sendMessage(Component.text("TRIPLE DROPS!!!").color(TextColor.color(NamedTextColor.AQUA)).decorate(TextDecoration.BOLD));
                 itemlist.addAll(blockbreak.getBlock().getDrops());
                 itemlist.addAll(blockbreak.getBlock().getDrops());
                 itemlist.addAll(blockbreak.getBlock().getDrops());
+                blockbreak.setDropItems(true);
             }
         } else if (blockbreak.getPlayer().getInventory().getItemInMainHand().containsEnchantment(Enchantment.SILK_TOUCH)) {
             // just add the block normally if the player has a silk touch tool
             itemlist.add(new ItemStack(blockbreak.getBlock().getBlockData().getMaterial()));
+            blockbreak.setDropItems(false);
+        } else if (chests.contains(blockbreak.getBlock().getBlockData().getMaterial())) {
+            blockbreak.setDropItems(true);
         } else {
             itemlist.addAll(blockbreak.getBlock().getDrops());
         }

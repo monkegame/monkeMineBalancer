@@ -40,7 +40,6 @@ public class Listeners implements Listener {
             p.sendMessage(Component.text("Your inventory is full!").decoration(TextDecoration.ITALIC, true).color(NamedTextColor.RED));
         } else {
             orebal.dropRate(blockbreak, itemlist);
-            blockbreak.setDropItems(false);
             for (ItemStack item : itemlist) {
                 p.getInventory().addItem(item);
             }
