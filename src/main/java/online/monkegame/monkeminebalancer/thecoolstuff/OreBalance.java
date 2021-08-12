@@ -44,7 +44,10 @@ public class OreBalance {
             Material.CHEST,
             Material.CHEST_MINECART,
             Material.BARREL,
-            Material.TRAPPED_CHEST
+            Material.TRAPPED_CHEST,
+            Material.FURNACE,
+            Material.FURNACE_MINECART,
+            Material.BLAST_FURNACE
     );
 
     public void dropRate(BlockBreakEvent blockbreak, List<ItemStack> itemlist) {
@@ -79,6 +82,7 @@ public class OreBalance {
         } else {
             //if it's not a special block as defined, up here, just do the normal block drops
             itemlist.addAll(blockbreak.getBlock().getDrops());
+            blockbreak.setDropItems(false);
         }
     }
 
