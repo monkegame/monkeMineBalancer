@@ -54,20 +54,20 @@ public class OreBalance {
             if (weewoo < 0.931) {
                 //92.1% chance of single drops
                 itemlist.addAll(blockbreak.getBlock().getDrops());
-                blockbreak.setDropItems(true);
+                blockbreak.setDropItems(false);
             } else if (weewoo >= 0.931 && weewoo < 0.99) {
                 //6.9% chance of double drops - Smertieboi
                 blockbreak.getPlayer().sendMessage(Component.text("Double drops!").decoration(TextDecoration.ITALIC, true).color(NamedTextColor.GREEN));
                 itemlist.addAll(blockbreak.getBlock().getDrops());
                 itemlist.addAll(blockbreak.getBlock().getDrops());
-                blockbreak.setDropItems(true);
+                blockbreak.setDropItems(false);
             } else {
                 //1% chance of triple drops
                 blockbreak.getPlayer().sendMessage(Component.text("TRIPLE DROPS!!!").color(TextColor.color(NamedTextColor.AQUA)).decorate(TextDecoration.BOLD));
                 itemlist.addAll(blockbreak.getBlock().getDrops());
                 itemlist.addAll(blockbreak.getBlock().getDrops());
                 itemlist.addAll(blockbreak.getBlock().getDrops());
-                blockbreak.setDropItems(true);
+                blockbreak.setDropItems(false);
             }
         } else if (blockbreak.getPlayer().getInventory().getItemInMainHand().containsEnchantment(Enchantment.SILK_TOUCH)) {
             // just add the block normally if the player has a silk touch tool
