@@ -1,16 +1,14 @@
-package online.monkegame.monkeminebalancer.balance;
+package online.monkegame.monkeminebalancer.thecoolstuff;
 
 import net.kyori.adventure.text.Component;
 import net.kyori.adventure.text.format.NamedTextColor;
 import net.kyori.adventure.text.format.TextColor;
 import net.kyori.adventure.text.format.TextDecoration;
 import org.bukkit.Material;
-import org.bukkit.block.data.BlockData;
 import org.bukkit.enchantments.Enchantment;
 import org.bukkit.event.block.BlockBreakEvent;
 import org.bukkit.inventory.ItemStack;
 
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
@@ -76,8 +74,10 @@ public class OreBalance {
             itemlist.add(new ItemStack(blockbreak.getBlock().getBlockData().getMaterial()));
             blockbreak.setDropItems(false);
         } else if (chests.contains(blockbreak.getBlock().getBlockData().getMaterial())) {
+            //drops the block normally if it's a chest like
             blockbreak.setDropItems(true);
         } else {
+            //if it's not a special block as defined, up here, just do the normal block drops
             itemlist.addAll(blockbreak.getBlock().getDrops());
         }
     }
