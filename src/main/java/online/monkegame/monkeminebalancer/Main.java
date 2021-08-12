@@ -1,6 +1,7 @@
 package online.monkegame.monkeminebalancer;
 
 import online.monkegame.monkeminebalancer.thecoolstuff.Recipes;
+import org.bukkit.NamespacedKey;
 import org.bukkit.plugin.java.JavaPlugin;
 
 public class Main extends JavaPlugin {
@@ -14,7 +15,7 @@ public class Main extends JavaPlugin {
     @Override
     public void onEnable() {
         getServer().getPluginManager().registerEvents(new Listeners(this, getLogger()), this);
-        getServer().addRecipe(recipes.rottenFleshLeather());
+        getServer().addRecipe(recipes.rottenFleshLeather(new NamespacedKey(this, "rotten_leather")));
     }
 
 }
