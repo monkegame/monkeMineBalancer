@@ -1,4 +1,4 @@
-package online.monkegame.monkeminebalancer.thecoolstuff;
+package online.monkegame.monkesimp.thecoolstuff;
 
 import org.bukkit.Material;
 import org.bukkit.NamespacedKey;

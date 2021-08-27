@@ -1,4 +1,4 @@
-package online.monkegame.monkeminebalancer.utils;
+package online.monkegame.monkesimp.utils;
 
 import net.kyori.adventure.util.HSVLike;
 

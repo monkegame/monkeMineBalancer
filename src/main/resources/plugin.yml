@@ -1,5 +1,5 @@
-main: 'online.monkegame.monkeminebalancer.Main'
+main: 'online.monkegame.monkesimp.Main'
 version: '1.0'
-name: 'monkeMineBalancer'
+name: 'monkeSiMP'
 authors: ['Mrs_Herobrine_', 'Smertieboi']
 api-version: '1.17'

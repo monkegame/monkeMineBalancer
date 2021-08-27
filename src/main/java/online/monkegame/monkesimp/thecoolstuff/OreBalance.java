@@ -1,4 +1,4 @@
-package online.monkegame.monkeminebalancer.thecoolstuff;
+package online.monkegame.monkesimp.thecoolstuff;
 
 import net.kyori.adventure.text.Component;
 import net.kyori.adventure.text.format.NamedTextColor;
@@ -18,26 +18,26 @@ import static java.util.Map.entry;
 public class OreBalance {
 
     public Map<Material, Integer> materials = Map.ofEntries(
-            entry(Material.COAL_ORE,5),
-            entry(Material.DEEPSLATE_COAL_ORE,5),
-            entry(Material.DEEPSLATE_DIAMOND_ORE,2),
-            entry(Material.DEEPSLATE_EMERALD_ORE,3),
+            entry(Material.COAL_ORE,4),
+            entry(Material.DEEPSLATE_COAL_ORE,4),
+            entry(Material.DEEPSLATE_DIAMOND_ORE,1),
+            entry(Material.DEEPSLATE_EMERALD_ORE,2),
             entry(Material.DEEPSLATE_GOLD_ORE,3),
-            entry(Material.DEEPSLATE_COPPER_ORE,4),
-            entry(Material.DEEPSLATE_IRON_ORE,4),
-            entry(Material.DEEPSLATE_LAPIS_ORE,4),
-            entry(Material.DEEPSLATE_REDSTONE_ORE,3),
-            entry(Material.COPPER_ORE,4),
-            entry(Material.DIAMOND_ORE,2),
-            entry(Material.EMERALD_ORE,3),
-            entry(Material.GOLD_ORE,4),
-            entry(Material.NETHER_GOLD_ORE,4),
-            entry(Material.NETHER_QUARTZ_ORE,4),
-            entry(Material.REDSTONE_ORE,3),
-            entry(Material.IRON_ORE,4),
-            entry(Material.LAPIS_ORE,4),
-            entry(Material.AMETHYST_CLUSTER,3),
-            entry(Material.ANCIENT_DEBRIS, 1)
+            entry(Material.DEEPSLATE_COPPER_ORE,3),
+            entry(Material.DEEPSLATE_IRON_ORE,3),
+            entry(Material.DEEPSLATE_LAPIS_ORE,3),
+            entry(Material.DEEPSLATE_REDSTONE_ORE,2),
+            entry(Material.COPPER_ORE,3),
+            entry(Material.DIAMOND_ORE,1),
+            entry(Material.EMERALD_ORE,2),
+            entry(Material.GOLD_ORE,3),
+            entry(Material.NETHER_GOLD_ORE,3),
+            entry(Material.NETHER_QUARTZ_ORE,3),
+            entry(Material.REDSTONE_ORE,2),
+            entry(Material.IRON_ORE,3),
+            entry(Material.LAPIS_ORE,3),
+            entry(Material.AMETHYST_CLUSTER,2),
+            entry(Material.ANCIENT_DEBRIS, 0)
     );
 
     public List<Material> chests = Arrays.asList(
@@ -47,7 +47,9 @@ public class OreBalance {
             Material.TRAPPED_CHEST,
             Material.FURNACE,
             Material.FURNACE_MINECART,
-            Material.BLAST_FURNACE
+            Material.BLAST_FURNACE,
+            Material.HOPPER,
+            Material.HOPPER_MINECART
     );
 
     public void dropRate(BlockBreakEvent blockbreak, List<ItemStack> itemlist) {

@@ -1,9 +1,9 @@
-package online.monkegame.monkeminebalancer;
+package online.monkegame.monkesimp;
 
 import net.kyori.adventure.text.Component;
 import net.kyori.adventure.text.format.NamedTextColor;
 import net.kyori.adventure.text.format.TextDecoration;
-import online.monkegame.monkeminebalancer.thecoolstuff.OreBalance;
+import online.monkegame.monkesimp.thecoolstuff.OreBalance;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
