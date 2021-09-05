@@ -1,4 +1,4 @@
-package online.monkegame.monkesimp.thecoolstuff;
+package online.monkegame.monkesimp.qol;
 
 import net.kyori.adventure.text.Component;
 import net.kyori.adventure.text.format.NamedTextColor;

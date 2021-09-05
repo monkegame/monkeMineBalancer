@@ -1,6 +1,6 @@
 package online.monkegame.monkesimp;
 
-import online.monkegame.monkesimp.thecoolstuff.Recipes;
+import online.monkegame.monkesimp.qol.Recipes;
 import org.bukkit.NamespacedKey;
 import org.bukkit.plugin.java.JavaPlugin;
 

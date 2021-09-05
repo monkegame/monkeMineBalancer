@@ -3,7 +3,7 @@ package online.monkegame.monkesimp;
 import net.kyori.adventure.text.Component;
 import net.kyori.adventure.text.format.NamedTextColor;
 import net.kyori.adventure.text.format.TextDecoration;
-import online.monkegame.monkesimp.thecoolstuff.OreBalance;
+import online.monkegame.monkesimp.qol.OreBalance;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
