@@ -15,7 +15,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Logger;
 
-public class Listeners implements Listener {
+public class BlockListener implements Listener {
 
     public Main plugin;
     public Logger log;
@@ -23,7 +23,7 @@ public class Listeners implements Listener {
     public OreBalance orebal;
     BukkitScheduler scheduler;
 
-    public Listeners(Main main, Logger logger) {
+    public BlockListener(Main main, Logger logger) {
         this.plugin = main;
         this.log = logger;
         this.orebal = new OreBalance();

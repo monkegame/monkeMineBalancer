@@ -14,8 +14,11 @@ public class Main extends JavaPlugin {
 
     @Override
     public void onEnable() {
-        getServer().getPluginManager().registerEvents(new Listeners(this, getLogger()), this);
+
+        getServer().getPluginManager().registerEvents(new BlockListener(this, getLogger()), this);
+
         getServer().addRecipe(recipes.rottenFleshLeather(new NamespacedKey(this, "rotten_leather")));
+        getServer().addRecipe(recipes.ironGoldHelmet(new NamespacedKey(this, "iron_gold_helmet")));
     }
 
 }
